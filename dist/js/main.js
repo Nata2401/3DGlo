@@ -1,0 +1,1 @@
+(()=>{"use strict";console.log("one.js"),console.log("one11.js"),console.log("two.js")})();
