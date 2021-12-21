@@ -1,22 +1,22 @@
-"use strict";
 const timer = (deadline) => {
   const timerHours = document.getElementById("timer-hours");
   const timerMinutes = document.getElementById("timer-minutes");
   const timerSeconds = document.getElementById("timer-seconds");
 
-  const getTimeRemaining = () => {
+  const getTimeRemain = () => {
     let dateStop = new Date(deadline).getTime();
     let dateNow = new Date().getTime();
-    let timeRemaining = (dateStop - dateNow) / 1000;
-    let hours = Math.floor(timeRemaining / 60 / 60);
-    let minutes = Math.floor((timeRemaining / 60) % 60);
-    let seconds = Math.floor(timeRemaining % 60);
+    let timeRemain = (dateStop - dateNow) / 1000;
 
-    return { timeRemaining, hours, minutes, seconds };
+    let hours = Math.floor(timeRemain / 60 / 60);
+    let minutes = Math.floor((timeRemain / 60) % 60);
+    let seconds = Math.floor(timeRemain % 60);
+
+    return { timeRemain, hours, minutes, seconds };
   };
 
   const updateClock = () => {
-    let getTime = getTimeRemaining();
+    let getTime = getTimeRemain();
 
     if (getTime.hours < 10) {
       getTime.hours = "0" + getTime.hours;
@@ -30,14 +30,14 @@ const timer = (deadline) => {
     timerMinutes.textContent = getTime.minutes;
     timerSeconds.textContent = getTime.seconds;
 
-    // if (getTime.timeRemaining > 0) {
-    //   setTimeout(updateClock, 1000);
+    // if (getTime.timeRemain > 0){
+    //     setTimeout(updateClock, 1000);
     // }
   };
-  //updateClock();
+
   const startTimer = () => {
-    let getTime = getTimeRemaining();
-    if (getTime.timeRemaining > 0) {
+    let getTime = getTimeRemain();
+    if (getTime.timeRemain > 0) {
       setInterval(updateClock, 1000);
     }
   };
