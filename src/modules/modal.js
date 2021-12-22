@@ -58,8 +58,6 @@ const modal = () => {
       }
     });
   });
-
-  console.log(window.innerWidth);
 };
 
 export default modal;
