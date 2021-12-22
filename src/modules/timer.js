@@ -20,9 +20,11 @@ const timer = (deadline) => {
 
     if (getTime.hours < 10) {
       getTime.hours = "0" + getTime.hours;
-    } else if (getTime.minutes < 10) {
+    }
+    if (getTime.minutes < 10) {
       getTime.minutes = "0" + getTime.minutes;
-    } else if (getTime.seconds < 10) {
+    }
+    if (getTime.seconds < 10) {
       getTime.seconds = "0" + getTime.seconds;
     }
 
