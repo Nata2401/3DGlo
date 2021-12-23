@@ -34,7 +34,6 @@ const menu = () => {
   toServiceBtn.addEventListener("click", (e) => {
     e.preventDefault();
     const blockID = toServiceBtn.getAttribute("href");
-    console.log(blockID);
     document.querySelector("" + blockID).scrollIntoView({
       behavior: "smooth",
       block: "start",
