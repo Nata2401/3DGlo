@@ -17,7 +17,17 @@ const menu = () => {
   });
 
   menuItems.forEach((menuItem) =>
-    menuItem.addEventListener("click", handleMenu)
+    menuItem.addEventListener("click", (e) => {
+      e.preventDefault();
+      const blockID = menuItem.getAttribute("href");
+
+      document.querySelector("" + blockID).scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+
+      handleMenu();
+    })
   );
 };
 
