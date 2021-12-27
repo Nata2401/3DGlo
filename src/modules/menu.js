@@ -1,43 +1,28 @@
-"use strict";
 const menu = () => {
-  const menuBtn = document.querySelector(".menu");
   const menu = document.querySelector("menu");
-  const closeBtn = menu.querySelector(".close-btn");
-  const menuItems = menu.querySelectorAll("ul>li>a");
-  const toServiceBtn = document.querySelector("main>a");
 
-  const handleMenu = () => {
+  const toggleMenu = () => {
     menu.classList.toggle("active-menu");
   };
 
-  menuBtn.addEventListener("click", handleMenu);
-
-  closeBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    handleMenu();
-  });
-
-  menuItems.forEach((menuItem) =>
-    menuItem.addEventListener("click", (e) => {
-      e.preventDefault();
-      const blockID = menuItem.getAttribute("href");
-
-      document.querySelector("" + blockID).scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-
-      handleMenu();
-    })
-  );
-
-  toServiceBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    const blockID = toServiceBtn.getAttribute("href");
-    document.querySelector("" + blockID).scrollIntoView({
+  const goToAncor = (e) => {
+    document.querySelector(e.hash).scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
+  };
+
+  document.addEventListener("click", (e) => {
+    if (e.target.closest(".close-btn") || e.target.closest(".menu")) {
+      e.preventDefault();
+      toggleMenu();
+    } else if (e.target.closest("a")) {
+      e.preventDefault();
+      goToAncor(e.target.closest("a"));
+      toggleMenu();
+    } else if (e.target !== menu && menu.classList.contains("active-menu")) {
+      toggleMenu();
+    }
   });
 };
 

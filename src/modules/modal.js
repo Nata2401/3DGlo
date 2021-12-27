@@ -58,6 +58,14 @@ const modal = () => {
       }
     });
   });
+  modal.addEventListener("click", (e) => {
+    if (
+      !e.target.closest(".popup-content") ||
+      e.target.classList.contains("popup-close")
+    ) {
+      modal.style.display = "none";
+    }
+  });
 };
 
 export default modal;
