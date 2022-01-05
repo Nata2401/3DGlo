@@ -5,6 +5,7 @@ import validate from "./modules/validate";
 import tabs from "./modules/tabs";
 import scrollSmooth from "./modules/scroll";
 import slider from "./modules/slider";
+import calc from "./modules/calc";
 
 timer("25 december 2021");
 menu();
@@ -19,3 +20,4 @@ slider(
   "portfolio-item-active",
   "dot-active"
 );
+calc(100);
