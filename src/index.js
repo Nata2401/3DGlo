@@ -6,11 +6,25 @@ import tabs from "./modules/tabs";
 import scrollSmooth from "./modules/scroll";
 import slider from "./modules/slider";
 import calc from "./modules/calc";
+import sendForm from "./modules/sendForm";
 
 timer("25 december 2021");
 menu();
 modal();
 validate();
+
+sendForm({
+  formId: "form1",
+  someElem: [
+    {
+      type: "block",
+      id: "total",
+    },
+  ],
+});
+sendForm({ formId: "form2" });
+sendForm({ formId: "form3" });
+
 tabs();
 scrollSmooth();
 slider(
