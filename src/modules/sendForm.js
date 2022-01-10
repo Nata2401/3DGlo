@@ -52,10 +52,18 @@ const sendForm = ({ formId, someElem = [] }) => {
       sendData(formBody)
         .then(() => {
           statusBlock.textContent = succsessText;
+          statusBlock.style.color = 'white';
 
           formElements.forEach((input) => {
             input.value = "";
             input.style.border = "";
+            setTimeout(()=>{
+              statusBlock.textContent = '';  
+              if (form.id === 'form3') {
+              const popup = document.querySelector('.popup');
+              popup.style.display = 'none';
+              }      
+          },5000);
           });
         })
         .catch((error) => {
@@ -64,6 +72,7 @@ const sendForm = ({ formId, someElem = [] }) => {
         });
     } else {
       statusBlock.textContent = errorText;
+      statusBlock.style.color = 'white';
       alert("Данные заполнены неверно!!!");
     }
   };

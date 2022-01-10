@@ -45,7 +45,7 @@ const validate = () => {
     let namePlaceholderOne = message.getAttribute("placeholder");
     if (namePlaceholderOne === "Ваше сообщение") {
       message.value = message.value.replace(
-        /[^\\а-я\s\d\.\,\!\?\:\-\+\*\=\;\'\"\@\(\)]/gi,
+        /[^\\а-я\s\d\.\,\!\?\:\-\+\*\=\;\'\"\(\)]/gi,
         ""
       );
     }
