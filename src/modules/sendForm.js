@@ -86,7 +86,7 @@ const sendForm = ({ formId, someElem = [] }) => {
     } else {
       statusBlock.textContent = errorText;
       statusBlock.style.color = 'white';
-      alert("Имя должно быть не короче 3 симвовлов, E-mail в формате xxxx@yyyy.zzz, номер телефона не короче 11 цифр!");
+      alert("Имя должно быть не короче 2 симвовлов, E-mail в формате xxxx@yyyy.zzz, номер телефона не короче 11 цифр!");
     }
   };
 
