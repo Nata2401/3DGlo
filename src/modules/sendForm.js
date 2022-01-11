@@ -8,8 +8,21 @@ const sendForm = ({ formId, someElem = [] }) => {
   const validate = (list) => {
     let success = true;
 
-    list.forEach((input) => {
-      if (input.classList.contains("validation-error")) {
+    let formElements = form.querySelectorAll("input");
+
+    list.forEach((inputs) => {
+      formElements = form.querySelectorAll("input");
+      let reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/gi;
+
+      if (inputs.classList.contains("success")) {
+        success = false;
+      } 
+
+      if (formElements[0].value.length < 2) {
+        success = false;
+      } else if (reg.test(formElements[1].value) == false) {
+        success = false;
+      } else if (formElements[2].value.length < 11) {
         success = false;
       }
     });
@@ -73,7 +86,7 @@ const sendForm = ({ formId, someElem = [] }) => {
     } else {
       statusBlock.textContent = errorText;
       statusBlock.style.color = 'white';
-      alert("Данные заполнены неверно!!!");
+      alert("Имя должно быть не короче 3 симвовлов, E-mail в формате xxxx@yyyy.zzz, номер телефона не короче 11 цифр!");
     }
   };
 
