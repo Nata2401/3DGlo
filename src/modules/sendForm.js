@@ -2,28 +2,51 @@ const sendForm = ({ formId, someElem = [] }) => {
   const form = document.getElementById(formId);
   let statusBlock = document.createElement("div");
   statusBlock.className = "status-block";
-  const errorText = "Ошибка...";
+  let errorText = "Ошибка...";
   const succsessText = "Спасибо! Наш менеджер с вами свяжется!";
+ 
+  const validate = (formInputs) => {
+    const greenBorder = (elem) => {
+      elem.style.border = '2px solid green';
+      setTimeout(() => elem.style.border = '', 3000);
+    };
 
-  const validate = (list) => {
     let success = true;
+    errorText = 'Ошибка...';
 
-    let formElements = form.querySelectorAll("input");
+    formInputs.forEach(input => {
+      const type = input.name;
+      const value = input.value;
+      let isEmpty = value === '';
 
-    list.forEach((inputs) => {
-      formElements = form.querySelectorAll("input");
-      let reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/gi;
-
-      if (inputs.classList.contains("success")) {
-        success = false;
-      } 
-
-      if (formElements[0].value.length < 2) {
-        success = false;
-      } else if (reg.test(formElements[1].value) == false) {
-        success = false;
-      } else if (formElements[2].value.length < 11) {
-        success = false;
+      switch (type) {
+        case 'user_email':
+          if (isEmpty) {
+            success = false;
+            greenBorder(input);
+            errorText += 'Не заполнен Email!';
+          }
+          break;
+        case 'user_message':
+          if (isEmpty) {
+            success = false;
+            greenBorder(input);
+            errorText += 'Не заполнено поле сообщения!';
+          }
+          break;
+        case 'user_name':
+          if (value.length < 2) {
+            success = false;
+            greenBorder(input);
+            errorText += 'В имени должно быть от 2 символов!';
+          }
+          break;
+        case 'user_phone':
+          if (value.length < 11) {
+            success = false;
+            greenBorder(input);
+            errorText += 'Слишком короткий номер!';
+          } 
       }
     });
 
